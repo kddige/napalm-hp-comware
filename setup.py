@@ -12,7 +12,11 @@ except ImportError:
 __author__ = 'Zhecho Zhechev <zhechev.zhecho@gmail.com>'
 
 install_reqs = parse_requirements('requirements.txt', session=uuid.uuid1())
-reqs = [str(ir.req) for ir in install_reqs]
+
+try:
+    reqs = [str(ir.req) for ir in install_reqs]
+except:
+    reqs = [str(ir.requirement) for ir in install_reqs]
 
 setup(
     name="napalm-hp-comware",
